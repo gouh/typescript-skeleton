@@ -1,7 +1,7 @@
 {
-  "name": "tcs_app",
+  "name": "typescript-skeleton",
   "version": "1.0.0",
-  "description": "Lorem_ipsum",
+  "description": "This is a typescript skeleton with hotreload",
   "main": "build/index.js",
   "scripts": {
     "start": "NODE_PATH=./build node build/index.js",
