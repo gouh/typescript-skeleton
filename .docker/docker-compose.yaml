@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  ts-node-docker:
+    container_name: ts-node-docker
+    image: ts-node
+    build:
+      context: node
+      args:
+        - NODE_VERSION=${NODE_VERSION}
+    environment:
+      - NODE_ENV=development
+      - SERVER_PORT=${SERVER_PORT}
+    volumes:
+      - ./..:/home/node/app
+    expose:
+      - "${SERVER_PORT}"
+    ports:
+      - "${HOST_PORT}:${SERVER_PORT}"
+    command: bash -c "npm run dev"
