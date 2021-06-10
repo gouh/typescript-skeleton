@@ -15,7 +15,8 @@ class HealthController {
             'http_message': ReasonPhrases.OK,
             'data': {
                 'node': this.healthService.getNodeVersion(),
-                'db': await this.healthService.dbConnection()
+                'db': await this.healthService.dbConnection(),
+                'table': await this.healthService.tableRows()
             }
         });
     }

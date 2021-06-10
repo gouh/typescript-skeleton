@@ -33,15 +33,15 @@ class Pokemon extends Model {
 
     @CreatedAt
     @Column({field: 'created_at'})
-    creationDate?: Date;
+    createdAt?: Date;
 
     @UpdatedAt
     @Column({field: 'updated_at'})
-    updatedOn?: Date;
+    updatedAt?: Date;
 
     @DeletedAt
     @Column({field: 'deleted_at'})
-    deletionDate?: Date;
+    deletedAt?: Date;
 }
 
 export default Pokemon;

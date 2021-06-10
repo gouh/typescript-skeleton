@@ -1,10 +1,16 @@
 import {Service} from "typedi";
-import {Sequelize} from "sequelize-typescript";
+import {Repository, Sequelize} from "sequelize-typescript";
 import HealthDaoFactory from "../factory/HealthDaoFactory";
+import Pokemon from "../model/Pokemon";
 
 @Service({ factory: [HealthDaoFactory, 'create'] })
 class HealthDao {
-    constructor(private sequelize: Sequelize) {}
+
+    private repository: Repository<Pokemon>;
+
+    constructor(private sequelize: Sequelize) {
+        this.repository = this.sequelize.getRepository(Pokemon);
+    }
 
     /**
      * @return boolean
@@ -18,6 +24,10 @@ class HealthDao {
             console.error('Unable to connect to the database:', error);
             return false;
         }
+    }
+
+    async testTable(): Promise<Pokemon[]> {
+        return await this.repository.findAll();
     }
 }
 
