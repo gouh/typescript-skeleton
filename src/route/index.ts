@@ -1,9 +1,8 @@
 import {Application} from "express";
-import Container from "typedi";
 import HealthController from "../controller/HealthController";
+import Container from "../config/container";
 
 export default function (app: Application) {
-    const healthController = Container.get(HealthController);
-
+    const healthController: HealthController = Container.get(HealthController);
     app.get('/health', (req, res) => healthController.main(req, res));
 }
