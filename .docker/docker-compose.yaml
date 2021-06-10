@@ -18,3 +18,9 @@ services:
     ports:
       - "${HOST_PORT}:${SERVER_PORT}"
     command: bash -c "npm run dev"
+
+
+networks:
+  default:
+    external:
+      name: ${NETWORK}
